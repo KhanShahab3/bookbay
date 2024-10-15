@@ -20,7 +20,7 @@ const BookDetail = ({ route }) => {
 
   return (
     <View style={styles.container}>
-      <Image source={{ uri: book.imageUrl }} style={styles.image} />
+      <Image source={book.imageUrl} style={styles.image} />
       <Text style={styles.title}>{book.title}</Text>
       <Text style={styles.description}>{book.description}</Text>
       <Text style={styles.price}>{book.price}</Text>

@@ -14,21 +14,21 @@ const Books = ({ navigation }) => {
       title: "Design Patterns",
       description: "A comprehensive guide to software design patterns.",
       price: "$39.99",
-      imageUrl: "https://via.placeholder.com/150",
+      imageUrl: require("../assets/book1.jpg"),
     },
     {
       id: 2,
       title: "Clean Code",
       description: "Learn how to write cleaner, more maintainable code.",
       price: "$49.99",
-      imageUrl: "https://via.placeholder.com/150",
+      imageUrl: require("../assets/book1.jpg"),
     },
     {
       id: 3,
       title: "JavaScript: The Good Parts",
       description: "An in-depth exploration of JavaScript.",
       price: "$29.99",
-      imageUrl: "https://via.placeholder.com/150",
+      imageUrl: require("../assets/book2.jpg"),
     },
   ];
 
@@ -66,7 +66,7 @@ const Books = ({ navigation }) => {
   );
   const renderBook = ({ item }) => (
     <View key={item.id} style={styles.card}>
-      <Image source={{ uri: item.imageUrl }} style={styles.image} />
+      <Image source={item.imageUrl} style={styles.image} />
       <View style={styles.cardContent}>
         <Text style={styles.title}>{item.title}</Text>
         <Text style={styles.description}>{item.description}</Text>

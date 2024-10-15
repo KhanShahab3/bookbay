@@ -25,7 +25,11 @@ const AuthNavigator = () => {
         component={BookDetail}
         // options={{ headerShown: false }}
       />
-      <Stack.Screen name="tab" component={TabNavigator} />
+      <Stack.Screen
+        name="tab"
+        component={TabNavigator}
+        // options={{ headerShown: false }}
+      />
     </Stack.Navigator>
   );
 };

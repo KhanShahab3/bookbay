@@ -5,6 +5,8 @@ import { Ionicons } from "@expo/vector-icons"; // Import icons from Expo
 import Books from "../Books"; // Your "Books" component
 import Setting from "../Setting"; // Your "Setting" component
 import AccountScreen from "../AccountScreen";
+import Sell from "../Sell";
+import MyAds from "../MyAds";
 
 const Tab = createBottomTabNavigator();
 
@@ -18,6 +20,8 @@ const TabNavigator = () => {
 
           if (route.name === "Home") {
             iconName = focused ? "home" : "home-outline";
+          } else if (route.name === "MyAds") {
+            iconName = focused ? "pricetag" : "pricetag-outline";
           } else if (route.name === "Sell") {
             iconName = focused ? "add-circle" : "add-circle-outline";
           } else if (route.name === "Account") {
@@ -39,8 +43,13 @@ const TabNavigator = () => {
         options={{ tabBarLabel: "Home", headerShown: false }}
       />
       <Tab.Screen
+        name="MyAds"
+        component={MyAds} // Your Books component
+        options={{ tabBarLabel: "My Ads", headerShown: false }}
+      />
+      <Tab.Screen
         name="Sell"
-        component={Books} // This could be a separate "Sell" screen for selling books
+        component={Sell} // This could be a separate "Sell" screen for selling books
         options={{ tabBarLabel: "Sell", headerShown: false }}
       />
       <Tab.Screen
