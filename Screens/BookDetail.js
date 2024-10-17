@@ -7,15 +7,17 @@ import {
   TouchableOpacity,
   Alert,
 } from "react-native";
+import { useDispatch } from "react-redux";
+import { addToCart } from "./Navigators/Redux/CartSlice";
 
-const BookDetail = ({ route }) => {
+const BookDetail = ({ route, navigation }) => {
+  const dispatch = useDispatch();
   const { book } = route.params; // Retrieve the book passed from the Books screen
   const [quantity, setQuantity] = useState(1); // State for quantity
 
-  const handleAddToCart = () => {
-    // Logic for adding to cart (can be integrated with your cart system)
-    Alert.alert("Success", `${book.title} has been added to your cart!`);
-    // Optionally, pass this information to a Cart state or backend
+  const handleAddToCart = (book) => {
+    // Dispatch the addToCart action to Redux
+    dispatch(addToCart(book));
   };
 
   return (
@@ -28,7 +30,15 @@ const BookDetail = ({ route }) => {
       {/* Add to Cart Button */}
       <TouchableOpacity
         style={styles.addToCartButton}
-        onPress={handleAddToCart}
+        onPress={() => handleAddToCart(book)}
+      >
+        <Text style={styles.addToCartText}>🛒 Add to Cart</Text>
+      </TouchableOpacity>
+      <TouchableOpacity
+        style={styles.addToCartButton}
+        onPress={() => {
+          navigation.navigate("cart");
+        }}
       >
         <Text style={styles.addToCartText}>🛒 Add to Cart</Text>
       </TouchableOpacity>

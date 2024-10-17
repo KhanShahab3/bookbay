@@ -8,6 +8,7 @@ import SignUp from "../SignUp";
 import BookDetail from "../BookDetail";
 
 import TabNavigator from "./TabNavigator";
+import Cart from "../Cart";
 const Stack = createNativeStackNavigator();
 const AuthNavigator = () => {
   return (
@@ -30,6 +31,7 @@ const AuthNavigator = () => {
         component={TabNavigator}
         // options={{ headerShown: false }}
       />
+      <Stack.Screen name="cart" component={Cart} />
     </Stack.Navigator>
   );
 };

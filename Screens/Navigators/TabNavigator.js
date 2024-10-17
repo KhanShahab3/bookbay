@@ -7,62 +7,66 @@ import Setting from "../Setting"; // Your "Setting" component
 import AccountScreen from "../AccountScreen";
 import Sell from "../Sell";
 import MyAds from "../MyAds";
+import store from "./Redux/Store";
+import { Provider } from "react-redux";
 
 const Tab = createBottomTabNavigator();
 
 const TabNavigator = () => {
   return (
-    <Tab.Navigator
-      screenOptions={({ route }) => ({
-        // Define icons based on the route name
-        tabBarIcon: ({ focused, color, size }) => {
-          let iconName;
+    <Provider store={store}>
+      <Tab.Navigator
+        screenOptions={({ route }) => ({
+          // Define icons based on the route name
+          tabBarIcon: ({ focused, color, size }) => {
+            let iconName;
 
-          if (route.name === "Home") {
-            iconName = focused ? "home" : "home-outline";
-          } else if (route.name === "MyAds") {
-            iconName = focused ? "pricetag" : "pricetag-outline";
-          } else if (route.name === "Sell") {
-            iconName = focused ? "add-circle" : "add-circle-outline";
-          } else if (route.name === "Account") {
-            iconName = focused ? "person" : "person-outline";
-          } else if (route.name === "Settings") {
-            iconName = focused ? "settings" : "settings-outline";
-          }
+            if (route.name === "Home") {
+              iconName = focused ? "home" : "home-outline";
+            } else if (route.name === "MyAds") {
+              iconName = focused ? "pricetag" : "pricetag-outline";
+            } else if (route.name === "Sell") {
+              iconName = focused ? "add-circle" : "add-circle-outline";
+            } else if (route.name === "Account") {
+              iconName = focused ? "person" : "person-outline";
+            } else if (route.name === "Settings") {
+              iconName = focused ? "settings" : "settings-outline";
+            }
 
-          // Return the appropriate icon from Ionicons
-          return <Ionicons name={iconName} size={size} color={color} />;
-        },
-        tabBarActiveTintColor: "#2f95dc", // Color when active
-        tabBarInactiveTintColor: "gray", // Color when inactive
-      })}
-    >
-      <Tab.Screen
-        name="Home"
-        component={Books} // Your Books component
-        options={{ tabBarLabel: "Home", headerShown: false }}
-      />
-      <Tab.Screen
-        name="MyAds"
-        component={MyAds} // Your Books component
-        options={{ tabBarLabel: "My Ads", headerShown: false }}
-      />
-      <Tab.Screen
-        name="Sell"
-        component={Sell} // This could be a separate "Sell" screen for selling books
-        options={{ tabBarLabel: "Sell", headerShown: false }}
-      />
-      <Tab.Screen
-        name="Account"
-        component={AccountScreen} // A separate "Account" screen for the user
-        options={{ tabBarLabel: "Account", headerShown: false }}
-      />
-      <Tab.Screen
-        name="Settings"
-        component={Setting} // Your Setting component
-        options={{ tabBarLabel: "Settings", headerShown: false }}
-      />
-    </Tab.Navigator>
+            // Return the appropriate icon from Ionicons
+            return <Ionicons name={iconName} size={size} color={color} />;
+          },
+          tabBarActiveTintColor: "#2f95dc", // Color when active
+          tabBarInactiveTintColor: "gray", // Color when inactive
+        })}
+      >
+        <Tab.Screen
+          name="Home"
+          component={Books} // Your Books component
+          options={{ tabBarLabel: "Home", headerShown: false }}
+        />
+        <Tab.Screen
+          name="MyAds"
+          component={MyAds} // Your Books component
+          options={{ tabBarLabel: "My Ads", headerShown: false }}
+        />
+        <Tab.Screen
+          name="Sell"
+          component={Sell} // This could be a separate "Sell" screen for selling books
+          options={{ tabBarLabel: "Sell", headerShown: false }}
+        />
+        <Tab.Screen
+          name="Account"
+          component={AccountScreen} // A separate "Account" screen for the user
+          options={{ tabBarLabel: "Account", headerShown: false }}
+        />
+        <Tab.Screen
+          name="Settings"
+          component={Setting} // Your Setting component
+          options={{ tabBarLabel: "Settings", headerShown: false }}
+        />
+      </Tab.Navigator>
+    </Provider>
   );
 };
 

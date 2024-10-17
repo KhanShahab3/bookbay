@@ -5,8 +5,10 @@ import {
   responsiveHeight,
   responsiveWidth,
 } from "react-native-responsive-dimensions";
+import { useDispatch } from "react-redux";
 
 const Books = ({ navigation }) => {
+  const dispatch = useDispatch();
   const [selectedCategory, setSelectedCategory] = useState(null);
   const books = [
     {
